@@ -1,4 +1,4 @@
-<h1 align="center"> .NET 6 e Identity: implementando controle de usuário </h1>
+<h1 align="center"> .NET 6: criando uma web API </h1>
 
 <p align="center">
 Projeto de uma api para controle de acesso de usuários feito por Thiago Sette.
@@ -9,17 +9,15 @@ Projeto de uma api para controle de acesso de usuários feito por Thiago Sette.
   |&nbsp;&nbsp;&nbsp;
   <a href="#-tecnologias">Projeto</a>&nbsp;&nbsp;&nbsp;
   |&nbsp;&nbsp;&nbsp;
-  <a href="#-Identity">Identity</a>&nbsp;&nbsp;&nbsp;
+  <a href="#-Requisições">Gestão de Requisições na API</a>&nbsp;&nbsp;&nbsp;
   |&nbsp;&nbsp;&nbsp;
-  <a href="#-Token">Token JWT</a>&nbsp;&nbsp;&nbsp;
+  <a href="#-Padronização">Padronização na Entrega de Informações</a>&nbsp;&nbsp;&nbsp;
   |&nbsp;&nbsp;&nbsp;
-  <a href="#-Política de acesso">Política de acesso</a>&nbsp;&nbsp;&nbsp;
+  <a href="#-DTOs">Data Transfer Objects (DTOs)</a>&nbsp;&nbsp;&nbsp;
   |&nbsp;&nbsp;&nbsp;
-  <a href="#-Handlers">Handlers</a>&nbsp;&nbsp;&nbsp;
+  <a href="#-DbContext">Dados no Banco (DbContext)</a>&nbsp;&nbsp;&nbsp;
   |&nbsp;&nbsp;&nbsp;
-  <a href="#-Secrets">Secrets</a>&nbsp;&nbsp;&nbsp;
-  |&nbsp;&nbsp;&nbsp;
-  <a href="#-LINQ">LINQ</a>&nbsp;&nbsp;&nbsp;
+  <a href="#-MySQL">MySQL</a>&nbsp;&nbsp;&nbsp;
  </p>
 <br>
 
@@ -44,12 +42,12 @@ Esse projeto foi desenvolvido com as seguintes tecnologias:
 
 ## 💻 Projeto
 
-Em nosso projeto, focamos na criação de uma arquitetura sólida, priorizando a compreensão de conceitos como organização de código e implementação eficiente do Identity para facilitar o cadastro e autenticação de usuários. Reforçamos a segurança ao incorporar tokens JWT e adotamos o ASP.NET para aprimorar a comunicação através do envio de e-mails. Para proteção de dados sensíveis, implementamos a prática de ocultar informações por meio de secrets. O resultado é uma solução eficaz que combina desempenho, segurança e usabilidade de forma coesa e intuitiva.
+Implementamos uma abordagem abrangente para lidar com requisições em nossa API. Com uma compreensão aprofundada dos principais verbos HTTP, como GET e POST, conseguimos estabelecer uma comunicação eficiente entre o cliente e o servidor. A padronização na entrega de informações ao usuário não apenas aprimorou a experiência do usuário, mas também facilitou a manutenção do código ao longo do tempo. A utilização estratégica de Data Transfer Objects (DTOs) permitiu-nos gerenciar de maneira eficaz as requisições e respostas, promovendo uma comunicação clara e estruturada. Além disso, ao dominar o DbContext para operações de escrita, conseguimos manipular os dados de forma segura e consistente no banco, assegurando a integridade das informações. Esse conjunto de habilidades foi essencial para a criação de uma aplicação web coesa, eficiente e pronta para evoluir conforme as necessidades do projeto.
 
 
-## 💻 Token
+## 💻 Gestão de Requisições na API
 
-A tecnologia de Token JWT (JSON Web Token) é uma ferramenta eficaz para garantir a segurança e integridade das informações em aplicações web. Funcionando como um padrão aberto (RFC 7519), o JWT é um formato compacto e autocontido que permite a transferência segura de dados entre partes, geralmente utilizado para autenticação e autorização. Sua estrutura baseada em JSON facilita a leitura e interpretação, enquanto a assinatura digital proporciona autenticidade e verificabilidade dos dados. Um aspecto notável do JWT é sua capacidade de armazenar informações de forma encapsulada, tornando-o ideal para comunicações entre microsserviços ou em ambientes distribuídos. Sua versatilidade e eficiência fazem do JWT uma escolha popular para a implementação de sistemas seguros e escaláveis em diversas aplicações web e serviços online.
+A Gestão de Requisições na API é fundamental para estabelecer uma comunicação eficiente entre clientes e servidores em projetos web. Compreende a habilidade de receber e processar solicitações HTTP, sendo crucial para a execução de operações diversas. A compreensão dos principais verbos HTTP, como GET, POST e DELETE, possibilita a manipulação adequada das requisições, permitindo a recuperação de dados, envio de informações e ações específicas no servidor. Uma implementação eficaz dessa tecnologia não apenas facilita a interação entre componentes, mas também contribui para a construção de APIs robustas e escaláveis, essenciais para o desenvolvimento de aplicações modernas.
 
 ## 💻 Política de acesso
 
