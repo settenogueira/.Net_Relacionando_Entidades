@@ -99,3 +99,5 @@ C:\Projetos\.Net\RelacionandoEntidades\FilmesApi\obj\Debug\net8.0\scopedcss\bund
 C:\Projetos\.Net\RelacionandoEntidades\FilmesApi\obj\Debug\net8.0\FilmesApi.csproj.CopyComplete
 C:\Projetos\.Net\RelacionandoEntidades\FilmesApi\obj\Debug\net8.0\FilmesApi.genruntimeconfig.cache
 C:\Projetos\.Net\RelacionandoEntidades\FilmesApi\obj\Debug\net8.0\ref\FilmesApi.dll
+C:\Projetos\.Net\RelacionandoEntidades\FilmesApi\bin\Debug\net8.0\Castle.Core.dll
+C:\Projetos\.Net\RelacionandoEntidades\FilmesApi\bin\Debug\net8.0\Microsoft.EntityFrameworkCore.Proxies.dll

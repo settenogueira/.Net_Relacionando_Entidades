@@ -1,7 +1,7 @@
-<h1 align="center"> .NET 6: criando uma web API </h1>
+<h1 align="center"> .NET 6: criando uma web API com relacionamento de entidades </h1>
 
 <p align="center">
-Projeto de uma api para controle de acesso de usuários feito por Thiago Sette.
+Projeto de uma api com relacionamento de entidades e consultas (CRUDs) feito por Thiago Sette.
 </p>
 
 <p align="center">
