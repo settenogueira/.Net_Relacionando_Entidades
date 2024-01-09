@@ -1746,11 +1746,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Projetos\\.Net\\FilmesApi\\FilmesApi\\FilmesApi.csproj",
+      "projectUniqueName": "C:\\Projetos\\.Net\\RelacionandoEntidades\\FilmesApi\\FilmesApi.csproj",
       "projectName": "FilmesApi",
-      "projectPath": "C:\\Projetos\\.Net\\FilmesApi\\FilmesApi\\FilmesApi.csproj",
+      "projectPath": "C:\\Projetos\\.Net\\RelacionandoEntidades\\FilmesApi\\FilmesApi.csproj",
       "packagesPath": "C:\\Users\\sette.000\\.nuget\\packages\\",
-      "outputPath": "C:\\Projetos\\.Net\\FilmesApi\\FilmesApi\\obj\\",
+      "outputPath": "C:\\Projetos\\.Net\\RelacionandoEntidades\\FilmesApi\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\sette.000\\AppData\\Roaming\\NuGet\\NuGet.Config",
