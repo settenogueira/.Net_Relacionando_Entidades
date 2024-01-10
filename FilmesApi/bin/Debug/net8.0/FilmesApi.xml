@@ -48,16 +48,16 @@
         <member name="M:FilmesApi.Migrations.Sessaofilmes.BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)">
             <inheritdoc />
         </member>
-        <member name="T:FilmesApi.Migrations.sessaoecinema">
+        <member name="T:FilmesApi.Migrations.relacionandosessaoefilme">
             <inheritdoc />
         </member>
-        <member name="M:FilmesApi.Migrations.sessaoecinema.Up(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+        <member name="M:FilmesApi.Migrations.relacionandosessaoefilme.Up(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
             <inheritdoc />
         </member>
-        <member name="M:FilmesApi.Migrations.sessaoecinema.Down(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+        <member name="M:FilmesApi.Migrations.relacionandosessaoefilme.Down(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
             <inheritdoc />
         </member>
-        <member name="M:FilmesApi.Migrations.sessaoecinema.BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)">
+        <member name="M:FilmesApi.Migrations.relacionandosessaoefilme.BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)">
             <inheritdoc />
         </member>
     </members>
