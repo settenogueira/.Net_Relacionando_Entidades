@@ -1,8 +1,10 @@
 ﻿using AutoMapper;
-using FilmesApi.Data;
 using FilmesApi.Data.Dtos;
+using FilmesApi.Data;
 using FilmesApi.Models;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
+using System.Collections.Generic;
 
 namespace FilmesApi.Controllers
 {
@@ -19,6 +21,7 @@ namespace FilmesApi.Controllers
             _mapper = mapper;
         }
 
+
         [HttpPost]
         public IActionResult AdicionaCinema([FromBody] CreateCinemaDto cinemaDto)
         {
@@ -29,10 +32,15 @@ namespace FilmesApi.Controllers
         }
 
         [HttpGet]
-        public IEnumerable<ReadCinemaDto> RecuperaCinemas()
+        public IEnumerable<ReadCinemaDto> RecuperaCinemas([FromQuery] int? enderecoId = null)
         {
-            return _mapper.Map<List<ReadCinemaDto>>(_context.Cinemas.ToList());
+            if (enderecoId == null)
+            {
+                return _mapper.Map<List<ReadCinemaDto>>(_context.Cinemas.ToList());
+            }
+            return _mapper.Map<List<ReadCinemaDto>>(_context.Cinemas.FromSqlRaw($"SELECT Id, Nome, EnderecoId FROM cinemas where cinemas.EnderecoId = {enderecoId}").ToList());
         }
+
 
         [HttpGet("{id}")]
         public IActionResult RecuperaCinemasPorId(int id)
@@ -59,8 +67,9 @@ namespace FilmesApi.Controllers
             return NoContent();
         }
 
+
         [HttpDelete("{id}")]
-        public IActionResult DeleteCinema(int id)
+        public IActionResult DeletaCinema(int id)
         {
             Cinema cinema = _context.Cinemas.FirstOrDefault(cinema => cinema.Id == id);
             if (cinema == null)
@@ -70,7 +79,7 @@ namespace FilmesApi.Controllers
             _context.Remove(cinema);
             _context.SaveChanges();
             return NoContent();
-
         }
+
     }
 }

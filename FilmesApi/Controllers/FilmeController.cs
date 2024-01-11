@@ -4,21 +4,16 @@ using FilmesApi.Data.Dtos;
 using FilmesApi.Models;
 using Microsoft.AspNetCore.JsonPatch;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Update.Internal;
-using System;
-using System.Collections.Generic;
-using System.Linq;
 
 namespace FilmesApi.Controllers;
 
 [ApiController]
-[Route("[Controller]")]
+[Route("[controller]")]
 public class FilmeController : ControllerBase
 {
+
     private FilmeContext _context;
     private IMapper _mapper;
-  
 
     public FilmeController(FilmeContext context, IMapper mapper)
     {
@@ -40,27 +35,33 @@ public class FilmeController : ControllerBase
         Filme filme = _mapper.Map<Filme>(filmeDto);
         _context.Filmes.Add(filme);
         _context.SaveChanges();
-        return CreatedAtAction(nameof(RecuperaFilmePorID),
+        return CreatedAtAction(nameof(RecuperaFilmePorId),
             new { id = filme.Id },
             filme);
     }
 
     [HttpGet]
-    public IEnumerable<ReadFilmeDto> RecuperaFilme([FromQuery] int skip = 0, [FromQuery] int take = 50)
+    public IEnumerable<ReadFilmeDto> RecuperaFilmes([FromQuery] int skip = 0,
+        [FromQuery] int take = 50,
+        [FromQuery] string? nomeCinema = null)
     {
-        return _mapper.Map<List<ReadFilmeDto>>(_context.Filmes.Skip(skip).Take(take).ToList());
+        if (nomeCinema == null)
+        {
+            return _mapper.Map<List<ReadFilmeDto>>(_context.Filmes.Skip(skip).Take(take).ToList());
+        }
+        return _mapper.Map<List<ReadFilmeDto>>(_context.Filmes.Skip(skip).Take(take).Where(filme => filme.Sessoes
+                .Any(sessao => sessao.Cinema.Nome == nomeCinema)).ToList());
+
     }
 
     [HttpGet("{id}")]
-    public IActionResult RecuperaFilmePorID(int id)
+    public IActionResult RecuperaFilmePorId(int id)
     {
-        var filme = _context.Filmes.FirstOrDefault(filme => filme.Id == id);
-        if (filme == null)
-        {
-            return NotFound();
-        }
+        var filme = _context.Filmes
+            .FirstOrDefault(filme => filme.Id == id);
+        if (filme == null) return NotFound();
         var filmeDto = _mapper.Map<ReadFilmeDto>(filme);
-        return Ok(filme);
+        return Ok(filmeDto);
     }
 
     [HttpPut("{id}")]
@@ -74,44 +75,37 @@ public class FilmeController : ControllerBase
         _context.SaveChanges();
         return NoContent();
     }
+
     [HttpPatch("{id}")]
-    public IActionResult AtualizaFilmeParcial(int id, JsonPatchDocument<UpdateFilmeDto> patch)
+    public IActionResult AtualizaFilmeParcial(int id,
+        JsonPatchDocument<UpdateFilmeDto> patch)
     {
-        var filme = _context.Filmes.FirstOrDefault(f => f.Id == id);
-        if (filme == null)
-        {
-            return NotFound();
-        }
+        var filme = _context.Filmes.FirstOrDefault(
+            filme => filme.Id == id);
+        if (filme == null) return NotFound();
 
-        var filmeDto = _mapper.Map<UpdateFilmeDto>(filme);
+        var filmeParaAtualizar = _mapper.Map<UpdateFilmeDto>(filme);
 
-        patch.ApplyTo(filmeDto, ModelState);
+        patch.ApplyTo(filmeParaAtualizar, ModelState);
 
-        if (!TryValidateModel(filmeDto))
+        if (!TryValidateModel(filmeParaAtualizar))
         {
             return ValidationProblem(ModelState);
         }
-
-        _mapper.Map(filmeDto, filme);
+        _mapper.Map(filmeParaAtualizar, filme);
         _context.SaveChanges();
-
         return NoContent();
     }
-    [HttpDelete ("{id}")]
-    public IActionResult DeletaFilme(int id) 
-    {
-        var filme = _context.Filmes.FirstOrDefault(f => f.Id == id);
-        if (filme == null)
-        {
-            return NotFound();
-        }
 
+
+    [HttpDelete("{id}")]
+    public IActionResult DeletaFilme(int id)
+    {
+        var filme = _context.Filmes.FirstOrDefault(
+            filme => filme.Id == id);
+        if (filme == null) return NotFound();
         _context.Remove(filme);
         _context.SaveChanges();
-
         return NoContent();
     }
-
-
 }
-
